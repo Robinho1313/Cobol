@@ -2,7 +2,7 @@
        IDENTIFICATION DIVISION.
       *----------------------------------------------------------------- 
        
-       PROGRAM-ID. OLACOBOL.
+       PROGRAM-ID. CLIENTES.
        AUTHOR. ROBSON BORGES DOS SANTOS.
        INSTALLATION.  where.
        DATE-WRITTEN.  22/07/2025.
@@ -13,8 +13,8 @@
       *-----------------------------------------------------------------
        
        CONFIGURATION SECTION.
-       SPECIAL-NAMES.
-        DECIMAL-POINT IS COMMA. 
+       SPECIAL-NAMES. 
+        DECIMAL-POINT IS COMMA.
        INPUT-OUTPUT SECTION.
        FILE-CONTROL.
 
