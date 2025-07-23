@@ -21,14 +21,19 @@
       *-----------------------------------------------------------------
        DATA DIVISION.
       *-----------------------------------------------------------------
-        
         FILE SECTION.
+        
         WORKING-STORAGE SECTION.
+
+       01  WRK-NOME         PIC X(030) VALUE 'ROBSON BORGES DOS SANTOS'.                                     
+       01  WRK-SALDO        PIC 9(005) VALUE 1200.                                        
+
         LINKAGE SECTION.
 
       *-----------------------------------------------------------------
        PROCEDURE DIVISION.
       *-----------------------------------------------------------------
 
-           DISPLAY 'OLA COBOL'.           
+           DISPLAY 'NOME....: ' WRK-NOME.
+           DISPLAY 'SALDO...: ' WRK-SALDO.
            STOP RUN.
