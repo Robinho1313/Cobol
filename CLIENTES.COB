@@ -34,6 +34,11 @@
            MOVE 'ROBSON'  TO WRK-NOME.
            MOVE -2000     TO WRK-SALDO.
 
+           ADD 2500     TO WRK-SALDO.
+           SUBTRACT 300 from WRK-SALDO
+           MULTIPLY WRK-SALDO BY 2 GIVING WRK-SALDO.
+           DIVIDE WRK-SALDO   BY 4 GIVING WRK-SALDO.
+
            DISPLAY 'NOME....: ' WRK-NOME.
            DISPLAY 'SALDO...: ' WRK-SALDO.
       *---------------     
