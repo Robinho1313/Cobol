@@ -33,10 +33,19 @@
       *----------------------------------------------------------------*
        PROCEDURE DIVISION.
       *----------------------------------------------------------------*
+      
            MOVE 'ROBSON'  TO WRK-NOME.
            MOVE 5000      TO WRK-SALDO.
            MOVE 2         TO WRK-TIPO-CONTA. 
-
+         
+           PERFORM 002-CALCULADO.
+           PERFORM 003-VERIFICACAO.
+           PERFORM 004-FINAL.
+     
+           STOP RUN.     
+      ************************
+       002-CALCULADO SECTION.
+      ************************           
            EVALUATE WRK-TIPO-CONTA
             WHEN 1
                DISPLAY 'CONTA CORRENTE'
@@ -44,16 +53,20 @@
                DISPLAY 'CONTA POUPANCA'
             WHEN OTHER 
                DISPLAY 'NAO E CONTA DE PAGAMENTO'
-           END-EVALUATE.    
-
+           END-EVALUATE.  
+           
            ADD 4000 TO WRK-SALDO.
-           SUBTRACT 300 from WRK-SALDO
+           SUBTRACT 300 from WRK-SALDO.
            MULTIPLY WRK-SALDO BY 2 GIVING WRK-SALDO.
            DIVIDE WRK-SALDO   BY 4 GIVING WRK-SALDO.
            COMPUTE WRK-SALDO = WRK-SALDO * 2.
 
-           MOVE WRK-SALDO TO WRK-SALDO-FMT.
-
+           MOVE WRK-SALDO TO WRK-SALDO-FMT.    
+       002-FIM. 
+           EXIT. 
+      ************************* 
+       003-VERIFICACAO SECTION.
+      *************************           
            DISPLAY 'NOME........: ' WRK-NOME.
            DISPLAY 'SALDO.......: ' WRK-SALDO.
            DISPLAY 'SALDO-FMT...: ' WRK-SALDO-FMT.
@@ -69,6 +82,12 @@
               (WRK-SALDO GREATER THAN 5000)
               DISPLAY 'PARABENS POR ECONOMIZAR' 
            END-IF.     
+       003-FIM. 
+           EXIT.         
 
-      *---------------     
-           STOP RUN.
+      ******************** 
+       004-FINAL SECTION.
+      ********************         
+           DISPLAY 'FINAL DO PROGRAMA'.
+       004-FIM. EXIT.    
+        

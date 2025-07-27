@@ -48,11 +48,6 @@
            MOVE '-'                   TO CNPJ-ALFA(16:1).
            MOVE CNPJ-NUMERICO(13:2)   TO CNPJ-ALFA(17:2).
            
-          
-
-
-
            DISPLAY CNPJ-ALFA.    
-
       *---------------     
            STOP RUN.
