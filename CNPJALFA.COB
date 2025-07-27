@@ -1,11 +1,11 @@
       *----------------------------------------------------------------* 
        IDENTIFICATION DIVISION.
       *----------------------------------------------------------------*        
-       PROGRAM-ID. CLIENTES.
+       PROGRAM-ID. CNPJALFA.
        AUTHOR. ROBSON BORGES DOS SANTOS.
        INSTALLATION.  where.
-       DATE-WRITTEN.  22/07/2025.
-       DATE-COMPILED. 22/07/2025.
+       DATE-WRITTEN.  27/07/2025.
+       DATE-COMPILED. 27/07/2025.
       *----------------------------------------------------------------* 
        ENVIRONMENT DIVISION.
       *----------------------------------------------------------------*     
@@ -23,52 +23,36 @@
       *----------------------------------------------------------------*  
         WORKING-STORAGE SECTION. 
       *----------------------------------------------------------------*       
-       01  WRK-NOME         PIC  X(030) VALUE SPACES.                                     
-       01  WRK-SALDO        PIC S9(07) COMP VALUE 0. 
-       01  WRK-SALDO-FMT    PIC +Z.ZZ9,99.  
-       01  WRK-TIPO-CONTA   PIC 9.                                      
+       01  COD-CNPJ-DP      PIC  S9(004) COMP-3 VALUE 3271.                                     
+       01  CDV-CNPJ-DP      PIC   X(002) VALUE '93'. 
+       01  CNPJ-DECIMAL-DP  PIC   9(012) VALUE ZEROS. 
+       01  CNPJ-NUMERICO    PIC   X(014) VALUE SPACES.
+       01  CNPJ-ALFA        PIC   X(018) VALUE SPACES.                                      
       *----------------------------------------------------------------* 
         LINKAGE SECTION.
       *----------------------------------------------------------------*
       *----------------------------------------------------------------*
        PROCEDURE DIVISION.
       *----------------------------------------------------------------*
-           MOVE 'ROBSON'  TO WRK-NOME.
-           MOVE 5000      TO WRK-SALDO.
-           MOVE 2         TO WRK-TIPO-CONTA. 
+           MOVE COD-CNPJ-DP TO CNPJ-DECIMAL-DP.
+           MOVE CNPJ-DECIMAL-DP TO CNPJ-NUMERICO.
+           MOVE CDV-CNPJ-DP TO CNPJ-NUMERICO(13:2).
 
-           EVALUATE WRK-TIPO-CONTA
-            WHEN 1
-               DISPLAY 'CONTA CORRENTE'
-            WHEN 2
-               DISPLAY 'CONTA POUPANCA'
-            WHEN OTHER 
-               DISPLAY 'NAO E CONTA DE PAGAMENTO'
-           END-EVALUATE.    
+           MOVE CNPJ-NUMERICO(1:2)    TO CNPJ-ALFA(1:2).
+           MOVE '.'                   TO CNPJ-ALFA(3:1).
+           MOVE CNPJ-NUMERICO(3:3)    TO CNPJ-ALFA(4:3).
+           MOVE '.'                   TO CNPJ-ALFA(7:1). 
+           MOVE CNPJ-NUMERICO(6:3)    TO CNPJ-ALFA(8:10).
+           MOVE '/'                   TO CNPJ-ALFA(11:1).
+           MOVE CNPJ-NUMERICO(9:4)    TO CNPJ-ALFA(12:4).
+           MOVE '-'                   TO CNPJ-ALFA(16:1).
+           MOVE CNPJ-NUMERICO(13:2)   TO CNPJ-ALFA(17:2).
+           
+          
 
-           ADD 4000 TO WRK-SALDO.
-           SUBTRACT 300 from WRK-SALDO
-           MULTIPLY WRK-SALDO BY 2 GIVING WRK-SALDO.
-           DIVIDE WRK-SALDO   BY 4 GIVING WRK-SALDO.
-           COMPUTE WRK-SALDO = WRK-SALDO * 2.
 
-           MOVE WRK-SALDO TO WRK-SALDO-FMT.
 
-           DISPLAY 'NOME........: ' WRK-NOME.
-           DISPLAY 'SALDO.......: ' WRK-SALDO.
-           DISPLAY 'SALDO-FMT...: ' WRK-SALDO-FMT.
-
-           if WRK-SALDO LESS OR EQUAL 0 
-              DISPLAY 'NAO POSSUI SALDO'
-           ELSE 
-              DISPLAY 'SALDO POSITIVO'   
-           END-IF.   
-
-           IF (WRK-TIPO-CONTA EQUAL 2) 
-                        AND 
-              (WRK-SALDO GREATER THAN 5000)
-              DISPLAY 'PARABENS POR ECONOMIZAR' 
-           END-IF.     
+           DISPLAY CNPJ-ALFA.    
 
       *---------------     
            STOP RUN.
