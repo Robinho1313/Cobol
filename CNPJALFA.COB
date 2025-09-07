@@ -6,6 +6,9 @@
        INSTALLATION.  where.
        DATE-WRITTEN.  27/07/2025.
        DATE-COMPILED. 27/07/2025.
+      *OBJETIVO: DEFINE DUAS FORMAS DE POPULAR UMA VARIÁVEL COM 
+      *          CARACTERES USANDO UMA MÁSCARA OU  E TAMBÉM O 
+      *          USO DO PERFORM COMO LOOP
       *----------------------------------------------------------------* 
        ENVIRONMENT DIVISION.
       *----------------------------------------------------------------*     
@@ -18,10 +21,10 @@
        DATA DIVISION.
       *----------------------------------------------------------------*
       *----------------------------------------------------------------*
-        FILE SECTION.      
+       FILE SECTION.      
       *----------------------------------------------------------------*
       *----------------------------------------------------------------*  
-        WORKING-STORAGE SECTION. 
+       WORKING-STORAGE SECTION. 
       *----------------------------------------------------------------*       
        01  COD-CNPJ-DP      PIC  S9(004) COMP-3 VALUE 3271.   
        01  COD-CNPJ-ALFA    PIC   X(014) VALUE 'CHJ3478T334G00'. 
@@ -31,7 +34,7 @@
        01  CNPJ-NUMERICO    PIC   X(014) VALUE SPACES.
        01  CNPJ-ALFA        PIC   X(018) VALUE SPACES.                                      
       *----------------------------------------------------------------* 
-        LINKAGE SECTION.
+       LINKAGE SECTION.
       *----------------------------------------------------------------*
       *----------------------------------------------------------------*
        PROCEDURE DIVISION.
@@ -56,7 +59,7 @@
            MOVE '-' TO MASK-CNPJ(16:1).
            INSPECT MASK-CNPJ REPLACING ALL ' ' BY '.'.
            
-           DISPLAY MASK-CNPJ.
+           DISPLAY 'CNPJ ALFA....:' MASK-CNPJ.
 
            PERFORM 3 TIMES
               DISPLAY 'CNPJ-ALFA'
