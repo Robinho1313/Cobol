@@ -7,7 +7,7 @@
        INSTALLATION.  where.
        DATE-WRITTEN.  22/07/2025.
        DATE-COMPILED. 22/07/2025.
-
+      *OBJETIVO: PROGRAMA COBOL MAIS SIMPLES POSSÍVEL
       *----------------------------------------------------------------* 
        ENVIRONMENT DIVISION.
       *----------------------------------------------------------------*

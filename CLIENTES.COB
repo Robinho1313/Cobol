@@ -6,6 +6,7 @@
        INSTALLATION.  where.
        DATE-WRITTEN.  22/07/2025.
        DATE-COMPILED. 22/07/2025.
+      *OBJETIVO: ESTUDO DE COMO MANIPULAR VARIÁVEIS E USO DE MÁSCARAS 
       *----------------------------------------------------------------* 
        ENVIRONMENT DIVISION.
       *----------------------------------------------------------------*     
@@ -26,23 +27,33 @@
        01  WRK-NOME         PIC  X(030) VALUE SPACES.                                     
        01  WRK-SALDO        PIC S9(07) COMP VALUE 0. 
        01  WRK-SALDO-FMT    PIC +Z.ZZ9,99.  
-       01  WRK-TIPO-CONTA   PIC 9.                                      
+       01  WRK-TIPO-CONTA   PIC  9. 
+       01  WRK-NUM-COM-V    PIC  9(003)V99 VALUE 123,45.  
+       01  WRK-DATA         PIC  X(008) VALUE 13051984. 
+       01  WRK-DATA-S       PIC  X(010).   
+       01  WRK-DATA-FMTD.
+           05 DIA PIC X(002).
+           05 MES PIC X(002).
+           05 ANO PIC X(004).                              
       *----------------------------------------------------------------* 
         LINKAGE SECTION.
       *----------------------------------------------------------------*
       *----------------------------------------------------------------*
        PROCEDURE DIVISION.
       *----------------------------------------------------------------*
-      
+      *
            MOVE 'ROBSON'  TO WRK-NOME.
            MOVE 5000      TO WRK-SALDO.
            MOVE 2         TO WRK-TIPO-CONTA. 
          
            PERFORM 002-CALCULADO.
            PERFORM 003-VERIFICACAO.
+           PERFORM 103-FINAL.
+           PERFORM 104-DT-FMT
            PERFORM 004-FINAL.
      
-           STOP RUN.     
+           STOP RUN.
+      *     
       ************************
        002-CALCULADO SECTION.
       ************************           
@@ -83,11 +94,36 @@
               DISPLAY 'PARABENS POR ECONOMIZAR' 
            END-IF.     
        003-FIM. 
-           EXIT.         
+           EXIT. 
+      *
+      ******************** 
+       103-FINAL SECTION.
+      ********************         
+           DISPLAY WRK-NUM-COM-V.
+       103-FIM. 
+           EXIT.  
+
+      *
+      ******************** 
+       104-DT-FMT SECTION.
+      ********************   
+           MOVE WRK-DATA TO WRK-DATA-FMTD.  
+
+           STRING  
+              DIA '/' MES '/' ANO  DELIMITED BY SIZE INTO WRK-DATA-S
+           END-STRING  
+           DISPLAY WRK-DATA 
+           DISPLAY WRK-DATA-S.
+           DISPLAY DIA.
+           DISPLAY MES.
+           DISPLAY ANO.
+       104-FIM. 
+           EXIT.                         
 
       ******************** 
        004-FINAL SECTION.
       ********************         
            DISPLAY 'FINAL DO PROGRAMA'.
-       004-FIM. EXIT.    
+       004-FIM. 
+           EXIT.    
         
