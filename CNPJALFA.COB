@@ -32,7 +32,8 @@
        01  CDV-CNPJ-DP      PIC   X(002) VALUE '00'. 
        01  CNPJ-DECIMAL-DP  PIC   9(012) VALUE ZEROS. 
        01  CNPJ-NUMERICO    PIC   X(014) VALUE SPACES.
-       01  CNPJ-ALFA        PIC   X(018) VALUE SPACES.                                      
+       01  CNPJ-ALFA        PIC   X(018) VALUE SPACES.
+       77  IND              PIC   9(009) VALUE ZEROS.
       *----------------------------------------------------------------* 
        LINKAGE SECTION.
       *----------------------------------------------------------------*
@@ -63,6 +64,11 @@
 
            PERFORM 3 TIMES
               DISPLAY 'CNPJ-ALFA'
+           END-PERFORM.
+
+           PERFORM UNTIL IND > 5
+              DISPLAY IND
+              COMPUTE IND = IND + 1
            END-PERFORM.
       *---------------     
            STOP RUN.
