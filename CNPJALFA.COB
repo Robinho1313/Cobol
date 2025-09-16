@@ -6,9 +6,9 @@
        INSTALLATION.  where.
        DATE-WRITTEN.  27/07/2025.
        DATE-COMPILED. 27/07/2025.
-      *OBJETIVO: DEFINE DUAS FORMAS DE POPULAR UMA VARIÁVEL COM 
-      *          CARACTERES USANDO UMA MÁSCARA OU  E TAMBÉM O 
-      *          USO DO PERFORM COMO LOOP
+      *OBJETIVO: DEFINE DUAS FORMAS DIFERENTES DE POPULAR UMA VARIÁVEL               
+      *          USANDO UMA MÁSCARA OU PERFORM COMO LOOP
+      *          
       *----------------------------------------------------------------* 
        ENVIRONMENT DIVISION.
       *----------------------------------------------------------------*     
