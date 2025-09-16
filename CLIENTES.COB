@@ -67,7 +67,7 @@
            END-EVALUATE.  
            
            ADD 4000 TO WRK-SALDO.
-           SUBTRACT 300 from WRK-SALDO.
+           SUBTRACT 300 FROM WRK-SALDO.
            MULTIPLY WRK-SALDO BY 2 GIVING WRK-SALDO.
            DIVIDE WRK-SALDO   BY 4 GIVING WRK-SALDO.
            COMPUTE WRK-SALDO = WRK-SALDO * 2.
