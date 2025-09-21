@@ -28,12 +28,19 @@
       *----------------------------------------------------------------*
       *                   DECLARACAO DE VARIAVEIS
       *----------------------------------------------------------------*
-       77 NUMERO-UM     PIC 999.999.999,99.
-       77 NUMERO-DOIS   PIC ZZZ.ZZZ.ZZZ,ZZ.
-       77 NUMERO-TRES   PIC ZZZ.ZZZ.ZZ9,99.
-       77 NUMERO-QUATRO PIC $$$.$$$.$$9,99.
-       77 NUMERO-CINCO  PIC 999B999B999B99.
-      *  
+       77 NUMERO-UM     PIC 999.999.999,99 VALUE ZEROS.
+       77 NUMERO-DOIS   PIC ZZZ.ZZZ.ZZZ,ZZ VALUE ZEROS.
+       77 NUMERO-TRES   PIC ZZZ.ZZZ.ZZ9,99 VALUE ZEROS.
+       77 NUMERO-QUATRO PIC $$$.$$$.$$9,99 VALUE ZEROS.
+       77 NUMERO-CINCO  PIC 999B999B999B99 VALUE ZEROS.
+       77 NUMERO-SEIS   PIC ***.***.**9,99 VALUE ZEROS.
+       77 NUMERO-SETE   PIC ---.---.--9,99 VALUE ZEROS.
+
+       01 SITUACAO-CLIENTE       PIC X(01) VALUE SPACES.
+          88 ATIVO                         VALUE 'A'.
+          88 INATIVO                       VALUE 'B'. 
+          88 CANCELADO                     VALUE 'C'.
+      *    
       *
        LINKAGE SECTION.
       *
@@ -43,6 +50,7 @@
       
            PERFORM 10000-ATRIBUI-VALOR.
            PERFORM 20000-APRESENTAR-VALORES.
+           PERFORM 30000-CONDICIONAL.
       
            STOP RUN.
       *----------------------------------------------------------------*
@@ -53,6 +61,8 @@
            MOVE 1380 TO NUMERO-TRES.
            MOVE 1300 TO NUMERO-QUATRO.
            MOVE 1380 TO NUMERO-CINCO.
+           MOVE 1380 TO NUMERO-SEIS.
+           MOVE 1380 TO NUMERO-SETE.
 
        10000-FIM.
            EXIT.
@@ -65,8 +75,29 @@
            DISPLAY NUMERO-TRES.
            DISPLAY NUMERO-QUATRO.
            DISPLAY NUMERO-CINCO.
+           DISPLAY NUMERO-SEIS.
+           DISPLAY NUMERO-SETE.
  
        20000-FIM.
            EXIT.        
                   
-          
+      *----------------------------------------------------------------*
+       30000-CONDICIONAL SECTION.
+      *----------------------------------------------------------------* 
+      *     
+           MOVE 'B' TO SITUACAO-CLIENTE.
+
+           IF ATIVO
+              DISPLAY 'CLIENTE ATIVO'
+           END-IF.
+
+           IF INATIVO
+              DISPLAY 'CLIENTE INATIVO'
+           END-IF.
+
+           IF CANCELADO
+              DISPLAY 'CLIENTE CANCELADO'
+           END-IF.
+      *
+       30000-FIM.
+           EXIT.          
